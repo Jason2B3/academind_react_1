@@ -1,5 +1,6 @@
-import "./ExpenseItem.css";
 import ExpenseDate from "./ExpenseDate"; // import your sub-component
+import "./ExpenseItem.css";
+
 function ExpenseItem(props) {
   // gets props from App.js <ExpenseItem attribs=""/>
   return (
