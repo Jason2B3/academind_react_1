@@ -1,6 +1,6 @@
 import ExpenseItem from "./ExpenseItem";
 import './LeanExpenses.css'
-import Card from "./Card"
+import Card from "../UI/Card"
 
 function LeanExpenses(props) {
   return (

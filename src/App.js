@@ -1,4 +1,4 @@
-import LeanExpenses from "./components/LeanExpenses";
+import LeanExpenses from "./components/Expenses/LeanExpenses";
 function App() {
   const expenses = [
     {
