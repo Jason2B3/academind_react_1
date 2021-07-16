@@ -1,4 +1,5 @@
 import LeanExpenses from "./components/Expenses/LeanExpenses";
+import ExpenseForm from "./components/NewExpense/ExpenseForm";
 function App() {
   const expenses = [
     {
@@ -21,8 +22,12 @@ function App() {
       date: new Date(2021, 5, 12),
     },
   ];
-  return <LeanExpenses expenses={expenses}></LeanExpenses>;
+  return (
+    <div>
+      <ExpenseForm />
+      <LeanExpenses expenses={expenses}></LeanExpenses>
+    </div>
+  );
 }
 // Passed the expenses array to the LeanExpenses module via attributes and props
 export default App;
-

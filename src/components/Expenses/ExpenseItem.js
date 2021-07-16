@@ -5,12 +5,10 @@ import { useState } from "react";
 
 function ExpenseItem(props) {
   const [title, setTitle] = useState(props.title);
+  console.log("ExpenseItem evaluated by React"); 
   const clickHandler = () => {
     setTitle("UPDATED");
-    console.log("inside of handler scope:", title);
-    // after first press, "title" still keeps its orig value
   };
-  console.log("in function's root scope:", title); // after first press, it equals UPDATED
   return (
     <Card className="expense-item">
       <ExpenseDate date={props.date} />
@@ -22,4 +20,5 @@ function ExpenseItem(props) {
     </Card>
   );
 }
+
 export default ExpenseItem;
