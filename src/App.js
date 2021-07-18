@@ -22,12 +22,21 @@ function App() {
       date: new Date(2021, 5, 12),
     },
   ];
+  //# DataUp STEP 2: Create a handler function to set your new attribute equal to
+  const saveExpenseDataHandler = function (savedFormData) {
+    const expenseData = {
+      ...savedFormData, // save the data already present in the parameter
+      id: Math.random().toString(), // add a unique ID
+      // the parameter will equal the object of data that's collected in ExpenseForm.js
+    };
+    console.log("data moved to App.js!", expenseData);
+  };
+  //# DataUp STEP 1: Create a custom attribute where your CCM tags are used
   return (
     <div>
-      <ExpenseForm />
-      <LeanExpenses expenses={expenses}></LeanExpenses>
+      <ExpenseForm onSaveExpenseData={saveExpenseDataHandler} />
+      <LeanExpenses expenses={expenses} />
     </div>
   );
 }
-// Passed the expenses array to the LeanExpenses module via attributes and props
 export default App;
