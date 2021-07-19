@@ -1,5 +1,7 @@
 import LeanExpenses from "./components/Expenses/LeanExpenses";
 import ExpenseForm from "./components/NewExpense/ExpenseForm";
+import React, { useState } from "react";
+
 function App() {
   const expenses = [
     {
@@ -22,7 +24,9 @@ function App() {
       date: new Date(2021, 5, 12),
     },
   ];
-  //# DataUp STEP 2: Create a handler function to set your new attribute equal to
+  // Set up state for the data brought from ExpenseForm.js -> LeanExpenses.js
+  const [movedExpenseData, setMovedExpenseData] = useState("");
+  // DataUp STEP 2: Create a handler function to set your new attribute equal to
   const saveExpenseDataHandler = function (savedFormData) {
     const expenseData = {
       ...savedFormData, // save the data already present in the parameter
@@ -30,13 +34,24 @@ function App() {
       // the parameter will equal the object of data that's collected in ExpenseForm.js
     };
     console.log("data moved to App.js!", expenseData);
+    setMovedExpenseData(expenseData); //# REDEFINE EXPENSE DATA FROM NOTHING TO SOMETHING
   };
-  //# DataUp STEP 1: Create a custom attribute where your CCM tags are used
+  // DataUp STEP 1: Create a custom attribute where your CCM tags are used
   return (
     <div>
       <ExpenseForm onSaveExpenseData={saveExpenseDataHandler} />
-      <LeanExpenses expenses={expenses} />
+      <LeanExpenses expenses={expenses} passedFormData={movedExpenseData} />
     </div>
   );
 }
 export default App;
+
+//~ EXPLANATION
+// ExpenseForm.js gathers data about the info in the form fields, after we hit submit
+// props.onSaveExpenseData(expenseData)
+
+// We pass it up to App.js
+// onSaveExpenseData={saveExpenseDataHandler}
+
+// We pass it down to LeanExpense.js
+// passedFormData={movedExpenseData}

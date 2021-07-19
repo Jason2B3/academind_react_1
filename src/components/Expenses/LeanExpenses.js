@@ -3,6 +3,7 @@ import './LeanExpenses.css'
 import Card from "../UI/Card"
 
 function LeanExpenses(props) {
+  console.log('Form data moved to LeanExpenses.js', props.passedFormData)
   return (
     <Card className="expenses">
       <ExpenseItem
