@@ -1,5 +1,8 @@
 import LeanExpenses from "./components/Expenses/LeanExpenses";
 import ExpenseForm from "./components/NewExpense/ExpenseForm";
+import ActivateSight from "./ActivateSight";
+import { useState } from "react";
+
 function App() {
   const expenses = [
     {
@@ -29,13 +32,15 @@ function App() {
       id: Math.random().toString(), // add a unique ID
       // the parameter will equal the object of data that's collected in ExpenseForm.js
     };
-    console.log("data moved to App.js!", expenseData);
+    expenses.push(expenseData);
+    console.log("data moved to App.js!", expenses);
   };
   //# DataUp STEP 1: Create a custom attribute where your CCM tags are used
   return (
     <div>
       <ExpenseForm onSaveExpenseData={saveExpenseDataHandler} />
       <LeanExpenses expenses={expenses} />
+      <ActivateSight />
     </div>
   );
 }
