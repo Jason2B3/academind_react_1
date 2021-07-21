@@ -16,12 +16,11 @@ function ExpenseForm(props) {
   const submitHandler = (e) => {
     e.preventDefault(); //prevent pg reload
     const expenseData = {
-      title: enteredTitle,
-      amount: enteredAmount,
-      date: new Date(enteredDate),
       id: Math.random().toString(), // add a unique ID
+      title: enteredTitle,
+      amount: +enteredAmount,
+      date: new Date(enteredDate),
     };
-    console.log("onsubmit", expenseData);
     // Set all enteredVars to "", which sets the value attributes to "" as well
     setEnteredTitle("");
     setEnteredAmount("");

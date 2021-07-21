@@ -31,7 +31,8 @@ function App() {
     //# useState() && updating state based on previous state
 
     setExpenses((prevEntries) => {
-      return [...prevEntries, savedFormData];
+      // add the new expense to the start of the array (glitch bait)
+      return [savedFormData, ...prevEntries];
     });
   };
 
