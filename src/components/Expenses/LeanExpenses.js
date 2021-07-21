@@ -24,3 +24,4 @@ function LeanExpenses(props) {
   );
 }
 export default LeanExpenses;
+

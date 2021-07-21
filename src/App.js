@@ -24,8 +24,6 @@ const DUMMY_EXPENSES = [
   },
 ];
 function App() {
-  // Set up state
-  const [expenses, setExpenses] = useState(DUMMY_EXPENSES);
   const saveExpenseDataHandler = function (savedFormData) {
     //# Use arrow ƒ() syntax to update the DUMMY_EXPENSES object
     //# useState() && updating state based on previous state
@@ -36,6 +34,8 @@ function App() {
     });
   };
 
+  // Set up state
+  const [expenses, setExpenses] = useState(DUMMY_EXPENSES);
   return (
     <div>
       <ExpenseForm onSaveExpenseData={saveExpenseDataHandler} />
@@ -45,3 +45,4 @@ function App() {
   );
 }
 export default App;
+
