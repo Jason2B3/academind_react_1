@@ -2,44 +2,43 @@ import LeanExpenses from "./components/Expenses/LeanExpenses";
 import ExpenseForm from "./components/NewExpense/ExpenseForm";
 import ActivateSight from "./ActivateSight";
 import { useState } from "react";
-
+const DUMMY_EXPENSES = [
+  {
+    id: "e1",
+    title: "Toilet Paper",
+    amount: 94.12,
+    date: new Date(2020, 7, 14),
+  },
+  { id: "e2", title: "New TV", amount: 799.49, date: new Date(2021, 2, 12) },
+  {
+    id: "e3",
+    title: "Car Insurance",
+    amount: 294.67,
+    date: new Date(2021, 2, 28),
+  },
+  {
+    id: "e4",
+    title: "New Desk (Wooden)",
+    amount: 450,
+    date: new Date(2021, 5, 12),
+  },
+];
 function App() {
-  const expenses = [
-    {
-      id: "e1",
-      title: "Toilet Paper",
-      amount: 94.12,
-      date: new Date(2020, 7, 14),
-    },
-    { id: "e2", title: "New TV", amount: 799.49, date: new Date(2021, 2, 12) },
-    {
-      id: "e3",
-      title: "Car Insurance",
-      amount: 294.67,
-      date: new Date(2021, 2, 28),
-    },
-    {
-      id: "e4",
-      title: "New Desk (Wooden)",
-      amount: 450,
-      date: new Date(2021, 5, 12),
-    },
-  ];
-  //# DataUp STEP 2: Create a handler function to set your new attribute equal to
+  // Set up state
+  const [expenses, setExpenses] = useState(DUMMY_EXPENSES);
   const saveExpenseDataHandler = function (savedFormData) {
-    const expenseData = {
-      ...savedFormData, // save the data already present in the parameter
-      id: Math.random().toString(), // add a unique ID
-      // the parameter will equal the object of data that's collected in ExpenseForm.js
-    };
-    expenses.push(expenseData);
-    console.log("data moved to App.js!", expenses);
+    //# Use arrow ƒ() syntax to update the DUMMY_EXPENSES object
+    //# useState() && updating state based on previous state
+
+    setExpenses((prevEntries) => {
+      return [...prevEntries, savedFormData];
+    });
   };
-  //# DataUp STEP 1: Create a custom attribute where your CCM tags are used
+
   return (
     <div>
       <ExpenseForm onSaveExpenseData={saveExpenseDataHandler} />
-      <LeanExpenses expenses={expenses} />
+      <LeanExpenses expenseObj={expenses} />
       <ActivateSight />
     </div>
   );

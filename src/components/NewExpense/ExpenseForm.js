@@ -19,13 +19,15 @@ function ExpenseForm(props) {
       title: enteredTitle,
       amount: enteredAmount,
       date: new Date(enteredDate),
+      id: Math.random().toString(), // add a unique ID
     };
+    console.log("onsubmit", expenseData);
     // Set all enteredVars to "", which sets the value attributes to "" as well
     setEnteredTitle("");
     setEnteredAmount("");
     setEnteredDate("");
     //# DataUp STEP 3: Use your custom attribute's handler function
-    props.onSaveExpenseData(expenseData) //# supply the object we just created
+    props.onSaveExpenseData(expenseData); //# supply the object we just created
   };
   // ---------------------------------------------------
   return (
@@ -70,5 +72,3 @@ function ExpenseForm(props) {
 }
 
 export default ExpenseForm;
-
-

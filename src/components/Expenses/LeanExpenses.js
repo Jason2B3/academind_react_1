@@ -10,13 +10,14 @@ function LeanExpenses(props) {
     console.log("The year hath arrived up to LeanExpenses.js!", yr);
     setFilteredYear(yr);
   };
+  console.log("LEAN", typeof props.expenseObj);
   return (
     <Card className="expenses">
       <ExpensesFilter
         defaultYear={filteredYear}
         onSelectFilterYear={filterYearHandler}
       />
-      {props.expenses.map((obj) => (
+      {props.expenseObj.map((obj) => (
         <ExpenseItem title={obj.title} amount={obj.amount} date={obj.date} />
       ))}
     </Card>
