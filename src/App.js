@@ -29,8 +29,25 @@ function App() {
     //# useState() && updating state based on previous state
 
     setExpenses((prevEntries) => {
-      // add the new expense to the start of the array (glitch bait)
+      // Add the new expense to the start of the array (glitch bait)
       return [savedFormData, ...prevEntries];
+    });
+  };
+  const changeFilterHandler = function (selectedYear) {
+    // If "any" is chosen => skip the filtering and just render as is
+    if(selectedYear==="Any") {
+      setExpenses(() => {
+        return [...DUMMY_EXPENSES];
+      });
+      return
+    }
+    // If a year is chosen => apply filter then render array
+    let filteredExp = DUMMY_EXPENSES.filter((obj) => {
+      let entryYear = obj.date.getFullYear(); 
+      return entryYear === Number(selectedYear);
+    });
+    setExpenses(() => {
+      return [...filteredExp];
     });
   };
 
@@ -39,10 +56,12 @@ function App() {
   return (
     <div>
       <ExpenseForm onSaveExpenseData={saveExpenseDataHandler} />
-      <LeanExpenses expenseObj={expenses} />
+      <LeanExpenses
+        onChangeFilter={changeFilterHandler}
+        expenseObj={expenses}
+      />
       <ActivateSight />
     </div>
   );
 }
 export default App;
-

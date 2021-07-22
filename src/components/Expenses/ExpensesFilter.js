@@ -3,6 +3,8 @@ import "./ExpensesFilter.css";
 
 const ExpensesFilter = (props) => {
   const opSelectHandler = function (e) {
+    // Set the value of <select> when you choose a DDM option
+    // Filter: Get back up to app.js part 1
     props.onSelectFilterYear(e.target.value);
   };
   return (
@@ -10,10 +12,11 @@ const ExpensesFilter = (props) => {
       <div className="expenses-filter__control">
         <label>Filter by year</label>
         <select onChange={opSelectHandler} value={props.defaultYear}>
-          <option value="2022">2022</option>
-          <option value="2021">2021</option>
-          <option value="2020">2020</option>
+          <option value="Any">Any</option>
           <option value="2019">2019</option>
+          <option value="2020">2020</option>
+          <option value="2021">2021</option>
+          <option value="2022">2022</option>
         </select>
       </div>
     </div>

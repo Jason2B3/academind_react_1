@@ -5,12 +5,14 @@ import ExpensesFilter from "./ExpensesFilter";
 import React, { useState } from "react";
 
 function LeanExpenses(props) {
-  const [filteredYear, setFilteredYear] = useState("2020");
+  const [filteredYear, setFilteredYear] = useState("Any");
   const filterYearHandler = function (yr) {
     console.log("The year hath arrived up to LeanExpenses.js!", yr);
-    setFilteredYear(yr);
+    setFilteredYear(yr); // change filteredYear value
+    // Filter: Get back up to app.js part 2
+    props.onChangeFilter(yr)
   };
-  console.log(props.expenseObj, 'Lean');
+
   return (
     <Card className="expenses">
       <ExpensesFilter
