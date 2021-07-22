@@ -24,18 +24,17 @@ const DUMMY_EXPENSES = [
   },
 ];
 function App() {
-  const saveExpenseDataHandler = function (savedFormData) {
-    //# Use arrow ƒ() syntax to update the DUMMY_EXPENSES object
-    //# useState() && updating state based on previous state
+  //% Make the expenses object stateful
+  const [expenses, setExpenses] = useState(DUMMY_EXPENSES);
 
+  //% Function that saves new expense data into its dediccated stateful object
+  const saveExpenseDataHandler = function (savedFormData) {
     setExpenses((prevEntries) => {
-      // add the new expense to the start of the array (glitch bait)
+      // add the new expense to the start of the array 
       return [savedFormData, ...prevEntries];
     });
   };
 
-  // Set up state
-  const [expenses, setExpenses] = useState(DUMMY_EXPENSES);
   return (
     <div>
       <ExpenseForm onSaveExpenseData={saveExpenseDataHandler} />
