@@ -1,7 +1,6 @@
 import "./ExpenseForm.css";
 import ExpenseFormOpen from "./ExpenseFormOpen";
 import React, { useState } from "react";
-import Card from "../UI/Card";
 
 //# This function controls what the UI looks like before the form is opened
 function ExpenseForm(props) {

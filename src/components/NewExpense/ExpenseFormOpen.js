@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import './ExpenseFormOpen.css'
+import "./ExpenseFormOpen.css";
 
 const ExpenseFormOpen = (props) => {
   // Event-L PART 1: Set up useState()
@@ -15,6 +15,13 @@ const ExpenseFormOpen = (props) => {
   // Event-L PART 3: Clear input fields after submit
   const submitHandler = (e) => {
     e.preventDefault(); //prevent pg reload
+    if (enteredTitle === "" || enteredAmount === "" || enteredDate === "") {
+      alert("Must fill in all required fields");
+      setEnteredTitle("");
+      setEnteredAmount("");
+      setEnteredDate("");
+      return;
+    }
     const expenseData = {
       id: Math.random().toString(), // add a unique ID
       title: enteredTitle,
