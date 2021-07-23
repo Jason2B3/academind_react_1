@@ -28,16 +28,17 @@ function App() {
   const [expenses, setExpenses] = useState(DUMMY_EXPENSES);
 
   //% Function that saves new expense data into its dediccated stateful object
-  const saveExpenseDataHandler = function (savedFormData) {
+  const onSaveExpenseData = function (savedFormData) {
     setExpenses((prevEntries) => {
       // add the new expense to the start of the array 
+      console.log('Brought up to App.js', prevEntries)
       return [savedFormData, ...prevEntries];
     });
   };
 
   return (
     <div>
-      <ExpenseForm onSaveExpenseData={saveExpenseDataHandler} />
+      <ExpenseForm onSaveExpenseData={onSaveExpenseData} />
       <LeanExpenses expenseObj={expenses} />
       <ActivateSight />
     </div>
