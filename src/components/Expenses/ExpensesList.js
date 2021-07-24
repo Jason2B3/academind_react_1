@@ -1,5 +1,6 @@
 import "./ExpensesList.css";
 import ExpenseItem from "./ExpenseItem";
+import ExpensesChart from "./ExpensesChart";
 
 function ExpensesList(props) {
   //% Filter the expenses object based on the filter choice
@@ -14,16 +15,19 @@ function ExpensesList(props) {
   if (filteredExpenses.length === 0) return <h2>Found no expenses</h2>;
   //% Return this JSX if filteredExpenses is NOT empty:
   return (
-    <ul>
-      {filteredExpenses.map((obj) => (
-        <ExpenseItem
-          key={obj.id}
-          title={obj.title}
-          amount={obj.amount}
-          date={obj.date}
-        />
-      ))}
-    </ul>
+    <div>
+      <ExpensesChart filteredExpenses={filteredExpenses} />
+      <ul>
+        {filteredExpenses.map((obj) => (
+          <ExpenseItem
+            key={obj.id}
+            title={obj.title}
+            amount={obj.amount}
+            date={obj.date}
+          />
+        ))}
+      </ul>
+    </div>
   );
 }
 export default ExpensesList;

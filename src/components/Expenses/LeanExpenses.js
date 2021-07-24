@@ -17,6 +17,7 @@ function LeanExpenses(props) {
         defaultYear={filteredYear}
         onSelectFilterYear={filterYearHandler}
       />
+      
       <ExpensesList filteredYear={filteredYear} expenseObj= {props.expenseObj}/>
     </Card>
   );
